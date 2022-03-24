@@ -27,13 +27,17 @@ import "./assets/css/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import AdminLayout from "layouts/Admin.js";
-import BusinessLayout from "layouts/BusinessLayout.js"
+import BusinessLayout from "layouts/BusinessLayout.js";
+import FormLayout from "layouts/Form";
+
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
       <Route path="/business" render={(props) => <BusinessLayout {...props} />} />
+      <Route path="/form" render={(props) => <FormLayout {...props} />} />
+
       <Redirect from="/" to="/admin/dashboard" />
     </Switch>
   </BrowserRouter>,
