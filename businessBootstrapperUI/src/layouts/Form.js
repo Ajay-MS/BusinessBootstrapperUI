@@ -13,64 +13,148 @@ const onSubmit = async values => {
 const FormLayout = () => (
   <Styles>
     <h1>Create your businesses</h1>
-    <a
-      href="https://final-form.org/react"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Read Docs
-    </a>
+    
     <Form
       onSubmit={onSubmit}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Business Name</label>
+            <label>Name</label>
             <Field
-              name="tName"
+              name="Name"
               component="input"
               type="text"
               placeholder=""
             />
-          </div>     
+          </div>  
           <div>
-            <label>Sauces</label>
+            <label>business</label>
             <div>
               <label>
                 <Field
-                  name="sauces"
+                  name="business"
                   component="input"
                   type="checkbox"
-                  value="URL Shortener"
+                  value="1"
                 />{' '}
-                Ketchup
+                URL Shortener
               </label>
               <label>
                 <Field
-                  name="sauces"
+                  name="business"
                   component="input"
                   type="checkbox"
-                  value="ECommerce"
+                  value="2"
                 />{' '}
-                Mustard
+                ECommerce
               </label>
               <label>
                 <Field
-                  name="sauces"
+                  name="business"
                   component="input"
                   type="checkbox"
-                  value="mayonnaise"
+                  value="3"
                 />{' '}
-                Mayonnaise
+                Messenger
               </label>
               <label>
                 <Field
-                  name="sauces"
+                  name="business"
                   component="input"
                   type="checkbox"
-                  value="guacamole"
+                  value="4"
                 />{' '}
-                Guacamole 🥑
+                Social Media 
+              </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="5"
+                />{' '}
+                Streaming 
+              </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="6"
+                />{' '}
+                Cloud File System 
+              </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="7"
+                />{' '}
+                Wallet
+              </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="8"
+                />{' '}
+                Payment Gateway      
+                </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="9"
+                />{' '}
+                Code Sharing
+              </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="10"
+                />{' '}
+                VoIP Calling
+              </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="11"
+                />{' '}
+                Food Ordering
+              </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="12"
+                />{' '}
+                Appointment Booking
+              </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="13"
+                />{' '}
+                Hotel Booking
+              </label>
+              <label>
+                <Field
+                  name="business"
+                  component="input"
+                  type="checkbox"
+                  value="14"
+                />{' '}
+                Git Versioning Control
               </label>
             </div>
           </div>
@@ -87,7 +171,6 @@ const FormLayout = () => (
               Reset
             </button>
           </div>
-          <pre>{JSON.stringify(values, 0, 2)}</pre>
         </form>
       )}
     />
