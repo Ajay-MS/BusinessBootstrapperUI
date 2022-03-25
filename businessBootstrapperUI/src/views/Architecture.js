@@ -56,7 +56,7 @@ class Architecture extends React.Component {
   fetchArchInfo = () => {
     var options = { 
       method: 'GET',
-      url: 'http://localhost:8080/architecture-meta/api/' + cookies.get('businessId'),
+      url: 'http://52.226.229.90:8080/architecture-meta/api/' + cookies.get('businessId'),
       headers: { 'content-type': 'application/json' },
       json: true 
     };

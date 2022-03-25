@@ -32,7 +32,7 @@ class Scale extends React.Component {
   updateScaleInfo = (instanceCount) => {
     var options = { 
       method: 'GET',
-      url: 'http://localhost:8080/business-profile/api/' + this.state.businessId + "/scale/" + instanceCount,
+      url: 'http://52.226.229.90:8080/business-profile/api/' + this.state.businessId + "/scale/" + instanceCount,
       headers: { 'content-type': 'application/json' },
       json: true 
     };

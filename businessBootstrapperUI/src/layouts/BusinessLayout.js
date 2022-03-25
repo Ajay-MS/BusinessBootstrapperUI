@@ -78,7 +78,7 @@ class  BusinessLayout extends React.Component {
   fetchBusinssTypeOptions = () => {
     var options = { 
       method: 'GET',
-      url: 'http://localhost:8080/metadata/business/types',
+      url: 'http://52.226.229.90:8080/metadata/business/types',
       headers: { 'content-type': 'application/json' },
       json: true 
     };
@@ -100,7 +100,7 @@ class  BusinessLayout extends React.Component {
   fetchBusinesses = () => {
     var options = { 
       method: 'GET',
-      url: 'http://localhost:8080/business/api',
+      url: 'http://52.226.229.90:8080/business/api',
       headers: { 'content-type': 'application/json' },
       json: true 
     };
@@ -130,7 +130,7 @@ class  BusinessLayout extends React.Component {
 
     var options = 
     { method: 'POST',
-      url: 'http://localhost:8080/business',
+      url: 'http://52.226.229.90:8080/business',
       headers: { 'content-type': 'application/json' },
       body: 
       { 

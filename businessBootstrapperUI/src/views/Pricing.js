@@ -34,7 +34,7 @@ class Pricing extends React.Component {
   fetchPricingInfo = () => {
     var options = { 
       method: 'GET',
-      url: 'http://localhost:8080/pricing-meta/api/' + this.state.businessId,
+      url: 'http://52.226.229.90:8080/pricing-meta/api/' + this.state.businessId,
       headers: { 'content-type': 'application/json' },
       json: true 
     };
