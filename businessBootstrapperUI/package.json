@@ -12,7 +12,9 @@
     "react": "17.0.1",
     "react-bootstrap": "1.4.3",
     "react-chartist": "0.14.3",
+    "react-cookie": "^4.1.1",
     "react-dom": "17.0.1",
+    "react-dropdown": "^1.9.2",
     "react-final-form": "^6.5.8",
     "react-flow-renderer": "^10.0.3",
     "react-hook-form": "^7.28.1",
@@ -20,7 +22,8 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "universal-cookie": "^4.0.4"
   },
   "optionalDependencies": {
     "jquery": "3.5.1",

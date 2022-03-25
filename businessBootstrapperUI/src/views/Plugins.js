@@ -13,10 +13,77 @@ import {
   Col,
   Form,
 } from "react-bootstrap";
+import Dropdown from 'react-dropdown';
 
 class Plugins extends React.Component {
 
+  constructor(props){
+    super(props);
+    this.state = 
+      {
+        plugins: [
+          "Microsoft Single sign-on",
+          "Google Single sign-on",
+          "Linked-in Single sign-on",
+          "AAD integration",
+          "Matrix - prometheus.io",
+          "Audit integration",
+          "Service Mesh Integration",
+          "SSL Integration",
+        ],
+        installedPlugins: [
+          "Microsoft Single sign-on",
+          "Matrix - prometheus.io",
+        ],
+
+        pluginOptions: [],
+        selectedValue: "",
+      }
+    
+  }
+
+  buildOptions = () => {
+    for(var plugin of this.state.plugins)
+    {
+      this.state.pluginOptions.push({value: plugin, label: plugin});
+    }
+  }
+
+  componentDidMount = () => {
+    this.buildOptions();
+  }
+
+  addPluginClick = (args) => {
+    var installedPlugins = this.state.installedPlugins;
+    console.log(args);
+    installedPlugins.push(this.state.selectedValue);
+    this.setState(
+      {installedPlugins: installedPlugins}
+    )
+  }
+
+  _onSelect  = (args) => {
+    this.setState({
+      selectedValue: args.value,
+    });
+  }
+
   render() {
+
+    const pluginsTable = [];
+
+    for (var plugin of this.state.installedPlugins) {
+      pluginsTable.push(
+
+              <tr>
+                    <td>{plugin}</td>
+                    <td>Add {plugin}</td>
+                    <td><Button className="btn-fill" variant="warning">Uninstall</Button ></td>
+              </tr>
+
+      )
+    }
+
     return (
       <>
         <Container fluid>
@@ -30,18 +97,18 @@ class Plugins extends React.Component {
                   <Form>
                     <Row>
                       <Col className="pr-1" md="8">
-                        <Form.Group>
-                          <Form.Control
-                            placeholder="Plugins"
-                            type="text"
-                          ></Form.Control>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlTextarea1"
+                        >
+                          <Dropdown options={this.state.pluginOptions} placeholder="Select plugin" onChange={this._onSelect} />
                         </Form.Group>
                       </Col>
                       <Col className="px-1" md="3">
                         <Form.Group>
                           <Button
                             className="btn-fill"
-                            type="submit"
+                            onClick={this.addPluginClick}
                             variant="info"
                           >
                             Add Plugin
@@ -72,16 +139,7 @@ class Plugins extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Metrics</td>
-                        <td>Integration with the detailed metrics</td>
-                        <td><Button className="btn-fill" variant="warning">Uninstall</Button ></td>
-                      </tr>
-                      <tr>
-                        <td>Single sign-on</td>
-                        <td>Single sign in from Microsoft, Google and Facebook accounts</td>
-                        <td><Button className="btn-fill" variant="warning">Uninstall</Button ></td>
-                      </tr>
+                      {pluginsTable}
                     </tbody>
                   </Table>
                 </Card.Body>

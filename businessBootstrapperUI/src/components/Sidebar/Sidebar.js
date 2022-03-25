@@ -22,8 +22,9 @@ import { Nav } from "react-bootstrap";
 
 import logo from "assets/img/reactlogo.png";
 
-function Sidebar({ color, image, routes }) {
+function Sidebar({ color, image, locationId, routes }) {
   const location = useLocation();
+  
   const activeRoute = (routeName) => {
     return location.pathname.indexOf(routeName) > -1 ? "active" : "";
   };

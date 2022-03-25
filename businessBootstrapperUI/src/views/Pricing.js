@@ -13,9 +13,70 @@ import {
   Col,
 } from "react-bootstrap";
 
+var request = require("request");
+import Cookies from 'universal-cookie';
+const cookies = new Cookies()
+
 class Pricing extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      businessId: cookies.get('businessId'),
+      pricingData: []
+    }
+  }
+
+  componentDidMount() {
+    this.fetchPricingInfo();
+  }
+
+  fetchPricingInfo = () => {
+    var options = { 
+      method: 'GET',
+      url: 'http://localhost:8080/pricing-meta/api/' + this.state.businessId,
+      headers: { 'content-type': 'application/json' },
+      json: true 
+    };
+
+    var that = this;
+
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+
+      
+      var pricingData = JSON.parse(body.pricing);
+      that.setState({
+        pricingData: pricingData
+      })
+    });
+  } 
+
+
+  
+
   render() {
+
+    var totalPrice = 0;
+    const pricingComponents = [];
+
+    for (var compo of this.state.pricingData)
+    {
+      var price = "$" + compo.price;
+      pricingComponents.push(
+        <tr>
+          <td>{compo.name}</td>
+          <td>{compo.component}</td>
+          <td>{compo.type}</td>
+          <td>{compo.config}</td>
+          <td align="right">{price}</td>
+        </tr>
+      )
+      totalPrice += parseInt(compo.price);
+    }
+
+    const totalPriceString = "$" + totalPrice;
+
     return (
       <>
         <Container fluid>
@@ -40,41 +101,7 @@ class Pricing extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>User portal</td>
-                        <td>App Service</td>
-                        <td>B1</td>
-                        <td>1 Core, 1.75 GB RAM, 10 GB storage</td>
-                        <td align="right">$55.80</td>
-                      </tr>
-                      <tr>
-                        <td>Admin portal</td>
-                        <td>App Service</td>
-                        <td>B1</td>
-                        <td>1 Core, 1.75 GB RAM, 10 GB storage</td>
-                        <td align="right">$55.80</td>
-                      </tr>
-                      <tr>
-                        <td>Load balancer</td>
-                        <td>Load balancer</td>
-                        <td>Basic</td>
-                        <td>-</td>
-                        <td align="right">$0.0</td>
-                      </tr>
-                      <tr>
-                        <td>Backend System</td>
-                        <td>App Service</td>
-                        <td>B2</td>
-                        <td>2 Core, 3.5 GB RAM, 10 GB storage</td>
-                        <td align="right">$109.50</td>
-                      </tr>
-                      <tr>
-                        <td>Database</td>
-                        <td>Azure MySQL</td>
-                        <td>General Purpose</td>
-                        <td>2 core</td>
-                        <td align="right">$127.50</td>
-                      </tr>
+                      {pricingComponents}
                     </tbody>
                   </Table>
                 </Card.Body>
@@ -94,7 +121,7 @@ class Pricing extends React.Component {
                   <Table className="table-hover table-striped">
                     <tbody>
                       <tr>
-                        <td align="right">$349.57</td>
+                        <td align="right">{totalPriceString}</td>
                       </tr>
                       
                     </tbody>
